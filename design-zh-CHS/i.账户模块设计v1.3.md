@@ -315,13 +315,13 @@
 
       ```
       {
-        "cmd": "createMultiAccount",
+        "cmd": "ac_createMultiSigAccount",
         "minVersion":1.0,
-        "params": [
-              1234,
-              ["pubKey1","pubKey2"],
-              2
-          ]
+        "params": {
+              "chainId":1234,
+              "pubKeys":["pubKey1","pubKey2"],
+              "minSigns":2
+          }
       }
       ```
 
@@ -330,8 +330,8 @@
       | index | parameter | required | type      | description                          |
       | ----- | --------- | -------- | --------- | ------------------------------------ |
       | 0     | chainId   | true     | Short     | 链ID，说明该账户属于哪个链           |
-      | 1     | pubKeys   | true     | jsonArray | 需要签名的公钥列表                   |
-      | 2     | minSigns  | true     | String    | 最少签名数，最少需要几个公钥验证通过 |
+      | 1     | pubKeys   | true     | jsonArray | 需要签名的公钥列表,每个元素以16进制字符串表示 |
+      | 2     | minSigns  | true     | Integer   | 最少签名数，最少需要几个公钥验证通过       |
 
     - 返回示例
 
@@ -2493,6 +2493,224 @@
     | result       | jsonObj | 业务数据     |
     | signatureHex | string  | 签名后的数据 |
 
+
+#### 2.2.34 别名转账
+
+- 功能说明：
+
+  转账到指定别名的账户中
+
+- 流程描述
+
+  ```
+  1、验证请求参数格式是否正确，金额是否正确
+  2、验证账户是否存在，验证密码是否正确
+  2、验证别名账户是否存在
+  3、构建交易请求，广播交易
+  ```
+
+- ac_transferByAlias接口
+
+  - 接口说明
+
+    该接口用于向指定别名的账户转账。
+
+  - 请求示例
+
+    ```
+    {
+      "cmd": "ac_transferByAlias",
+      "minVersion":1.0,
+      "params": 
+        {
+            "chainId":"12345",
+            "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
+            "password":"",
+            "dataHex":""
+        }
+    }
+    ```
+
+  - 请求参数说明
+
+    | index | parameter | required | type   | description                       |
+    | ----- | --------- | -------- | ------ | --------------------------------- |
+    | 0     | chainId   | true     | Short  | 链ID                              |
+    | 1     | address   | true     | String | 转出方地址                          |
+    | 2     | password  | false    | String | 账户密码                           |
+    | 3     | alias     | true     | String | 转入方别名                         |
+    | 4     | mount     | true     | String | 转账金额                         |
+
+  - 返回示例
+
+    ```
+    {
+        "code": 0,
+        "msg": "success",
+        "version":1.0,
+        "result": {
+           "signatureHex":""
+        }
+    }
+    ```
+
+  - 返回字段说明
+    如果转出地址为多签账户并且未达到最少签名数，则返回的数据为16进制交易数据串
+    如果转出地址为非多签账户，则返回的数据为交易hash
+
+    | parameter    | type    | description  |
+    | :----------- | :------ | :----------- |
+    | code         | Integer | 返回结果状态 |
+    | msg          | String  | 失败时的信息 |
+    | result       | jsonObj | 业务数据     |
+    | txHash       | string  | 交易Hash |
+
+
+#### 2.2.35 创建多签账户转账
+
+- 功能说明：
+
+  创建多签账户转账到其它账户交易
+
+- 流程描述
+
+  ```
+  1、验证请求参数格式是否正确，金额是否正确
+  2、验证签名账户是否存在，验证密码是否正确
+  2、验证多签账户是否存在，签名账户是否存在于多签账户中
+  3、对交易进行签名
+  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  ```
+
+- ac_createMultiSignTransfer接口
+
+  - 接口说明
+
+    该接口用于向指定别名的账户转账。
+
+  - 请求示例
+
+    ```
+    {
+      "cmd": "ac_createMultiSignTransfer接口",
+      "minVersion":1.0,
+      "params": 
+        {
+            "chainId":"12345",
+            "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
+            "signAddress":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
+            "password":"",
+            "amount":"",
+            "remark":""
+        }
+    }
+    ```
+
+  - 请求参数说明
+
+    | index | parameter | required | type   | description                       |
+    | ----- | --------- | -------- | ------ | --------------------------------- |
+    | 0     | chainId   | true     | Integer | 链ID                              |
+    | 2     | address   | true     | String  | 账户地址                              |
+    | 3     | signAddress   | true     | String | 签名地址                          |
+    | 4     | password  | false    | String | 账户密码                           |
+    | 5     | amount     | true     | String | 转账金额                         |
+    | 6     | remark     | true     | String | 交易备注                        |
+
+  - 返回示例
+
+    ```
+    {
+        "code": 0,
+        "msg": "success",
+        "version":1.0,
+        "result": {
+           "txData":""
+        }
+    }
+    ```
+
+  - 返回字段说明
+    如果未达到最少签名数则返回的数据为16进制交易数据串
+    如果已达到最少签名数并且已经广播交易，则返回的数据为交易hash
+
+    | parameter    | type    | description  |
+    | :----------- | :------ | :----------- |
+    | code         | Integer | 返回结果状态 |
+    | msg          | String  | 失败时的信息 |
+    | result       | jsonObj | 业务数据     |
+    | txData        | string  | 如果未广播交易则返回交易的16进制数据 |
+
+#### 2.2.36 多签转账签名
+
+- 功能说明：
+
+  多签账户转账到其它账户
+
+- 流程描述
+
+  ```
+  1、验证请求参数格式是否正确，金额是否正确
+  2、验证签名账户是否存在，验证密码是否正确
+  2、验证多签账户是否存在，签名账户是否存在于多签账户中
+  3、对交易进行签名
+  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  ```
+
+- ac_signMultiSignTransaction接口
+
+  - 接口说明
+
+    该接口用于向指定别名的账户转账。
+
+  - 请求示例
+
+    ```
+    {
+      "cmd": "ac_transferByAlias",
+      "minVersion":1.0,
+      "params": 
+        {
+            "chainId":"12345",
+            "signAddress":"",
+            "password":"",
+            "txData":""
+        }
+    }
+    ```
+
+  - 请求参数说明
+
+    | index | parameter | required | type   | description                       |
+    | ----- | --------- | -------- | ------ | --------------------------------- |
+    | 0     | chainId   | true     | Short  | 链ID                              |
+    | 1     | signAddress   | true     | String | 签名地址                          |
+    | 2     | password  | false    | String | 账户密码                           |
+    | 3     | txData     | true     | String | 交易数据                         |
+
+  - 返回示例
+
+    ```
+    {
+        "code": 0,
+        "msg": "success",
+        "version":1.0,
+        "result": {
+           "value":""
+        }
+    }
+    ```
+
+  - 返回字段说明
+    如果未达到最少签名数则返回的数据为16进制交易数据串
+    如果已达到最少签名数并且已经广播交易，则返回的数据为交易hash
+
+    | parameter    | type    | description  |
+    | :----------- | :------ | :----------- |
+    | code         | Integer | 返回结果状态 |
+    | msg          | String  | 失败时的信息 |
+    | result       | jsonObj | 业务数据     |
+    | value        | string  | 如果已经广播交易则返回交易Hash，如果未广播交易则返回交易的16进制数据 |
 
 ### 2.3 模块内部功能
 
