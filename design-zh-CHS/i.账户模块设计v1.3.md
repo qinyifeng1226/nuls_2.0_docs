@@ -2579,7 +2579,7 @@
   2、验证签名账户是否存在，验证密码是否正确
   2、验证多签账户是否存在，签名账户是否存在于多签账户中
   3、对交易进行签名
-  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  4、返回交易数据的16进制串
   ```
 
 - ac_createMultiSignTransfer接口
@@ -2592,7 +2592,7 @@
 
     ```
     {
-      "cmd": "ac_createMultiSignTransfer接口",
+      "cmd": "ac_createMultiSignTransfer",
       "minVersion":1.0,
       "params": 
         {
@@ -2625,56 +2625,55 @@
         "msg": "success",
         "version":1.0,
         "result": {
-           "txData":""
+           "txHex":""
         }
     }
     ```
 
   - 返回字段说明
-    如果未达到最少签名数则返回的数据为16进制交易数据串
-    如果已达到最少签名数并且已经广播交易，则返回的数据为交易hash
+    返回的数据为16进制交易数据串
 
     | parameter    | type    | description  |
     | :----------- | :------ | :----------- |
     | code         | Integer | 返回结果状态 |
     | msg          | String  | 失败时的信息 |
     | result       | jsonObj | 业务数据     |
-    | txData        | string  | 如果未广播交易则返回交易的16进制数据 |
+    | txHex        | string  | 交易的16进制数据 |
 
 #### 2.2.36 多签转账签名
 
 - 功能说明：
 
-  多签账户转账到其它账户
+  多签转账场景中，在未达到最少签名之前，通过该接口对交易进行签名
 
 - 流程描述
 
   ```
-  1、验证请求参数格式是否正确，金额是否正确
-  2、验证签名账户是否存在，验证密码是否正确
-  2、验证多签账户是否存在，签名账户是否存在于多签账户中
+  1、验证请求参数格式是否正确
+  2、将交易数据反序列化为交易对象
+  2、验证多签账户是否存在，签名账户是否存在于多签账户列表中
   3、对交易进行签名
-  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回签名后的交易数据的16进制串
   ```
 
 - ac_signMultiSignTransaction接口
 
   - 接口说明
 
-    该接口用于向指定别名的账户转账。
+    该接口用于多签交易中的交易签名。
 
   - 请求示例
 
     ```
     {
-      "cmd": "ac_transferByAlias",
+      "cmd": "ac_signMultiSignTransaction",
       "minVersion":1.0,
       "params": 
         {
             "chainId":"12345",
             "signAddress":"",
             "password":"",
-            "txData":""
+            "txHex":""
         }
     }
     ```
@@ -2686,7 +2685,7 @@
     | 0     | chainId   | true     | Short  | 链ID                              |
     | 1     | signAddress   | true     | String | 签名地址                          |
     | 2     | password  | false    | String | 账户密码                           |
-    | 3     | txData     | true     | String | 交易数据                         |
+    | 3     | txHex     | true     | String | 交易数据                         |
 
   - 返回示例
 
@@ -2710,7 +2709,8 @@
     | code         | Integer | 返回结果状态 |
     | msg          | String  | 失败时的信息 |
     | result       | jsonObj | 业务数据     |
-    | value        | string  | 如果已经广播交易则返回交易Hash，如果未广播交易则返回交易的16进制数据 |
+    | txHex        | string  | 达到最小签名数则广播交易并返回交易的16进制数据 |
+    | txHash        | string  | 如果已经广播交易则返回交易Hash |
 
 ### 2.3 模块内部功能
 
