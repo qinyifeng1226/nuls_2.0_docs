@@ -2521,6 +2521,7 @@
       "params": 
         {
             "chainId":"12345",
+            "assetsId":"12345",
             "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
             "password":"",
             "alias":"",
@@ -2535,11 +2536,12 @@
     | index | parameter | required | type  | description |
     | ----- | --------- | -------- | ----- | ----------- |
     | 0     | chainId   | true     | Short | 链ID         |
-    | 1     | address   | true     | String | 转出方地址  |                       
-    | 2     | password  | false    | String | 账户密码，如果账户已经设置密码则必须传入                   |
-    | 3     | alias     | true     | String | 转入方别名                         |
-    | 4     | amount     | true     | String | 转账金额                         |
-    | 5     | remark     | false   | String | 交易备注                         |
+    | 1     | assetsId    | false    | Integer | 资产ID，如果资产ID为空，则取当前链的主资产                    |
+    | 2     | address   | true     | String | 转出方地址  |                       
+    | 3     | password  | false    | String | 账户密码，如果账户已经设置密码则必须传入                   |
+    | 4     | alias     | true     | String | 转入方别名                         |
+    | 5     | amount     | true     | String | 转账金额                         |
+    | 6     | remark     | false   | String | 交易备注                         |
 
   - 返回示例
 
@@ -2597,6 +2599,7 @@
       "params": 
         {
             "chainId":"12345",
+            "assetsId":"12345",
             "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTESA",
             "signAddress":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
             "password":"",
@@ -2614,14 +2617,15 @@
     | index | parameter   | required | type    | description                |
     | ----- | ----------- | -------- | ------- | -------------------------- |
     | 0     | chainId     | true     | Integer | 链ID                        |
-    | 1     | address     | true     | String  | 账户地址                       |
-    | 2     | signAddress | true     | String  | 签名地址                       |
-    | 3     | password    | false    | String  | 账户密码，如果账户已经加密则必须传入         |
-    | 4     | type        | true     | Integer | 转账类型，如果为1则为地址转账，如果为2则为别名转账 |
-    | 5     | toAddress   | false    | String  | 转入名地址,type为1则必须传入          |
-    | 5     | alias       | false    | String  | 转入方别名，type为2则必须传入          |
-    | 6     | amount      | true     | String  | 转账金额                       |
-    | 6     | remark      | true     | String  | 交易备注                       |
+    | 1     | assetsId    | false    | Integer | 资产ID，如果资产ID为空，则取当前链的主资产                    |
+    | 2     | address     | true     | String  | 账户地址                       |
+    | 3     | signAddress | true     | String  | 签名地址                       |
+    | 4     | password    | false    | String  | 账户密码，如果账户已经加密则必须传入         |
+    | 5     | type        | true     | Integer | 转账类型，如果为1则为地址转账，如果为2则为别名转账 |
+    | 6     | toAddress   | false    | String  | 转入名地址,type为1则必须传入          |
+    | 7     | alias       | false    | String  | 转入方别名，type为2则必须传入          |
+    | 8     | amount      | true     | String  | 转账金额                       |
+    | 9     | remark      | true     | String  | 交易备注                       |
 
   - 返回示例
 
