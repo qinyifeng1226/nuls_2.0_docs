@@ -40,9 +40,9 @@
 1、账户模块依赖账本模块
 
 	ledger模块需要处理本地交易，依赖于账户信息。
-	
+
 	账户模块需要发起设置别名交易，需要ledger模块支付费用
-	
+
 	账户余额查询，需要依赖ledger模块
 
 2、账户模块依赖内核模块
@@ -155,11 +155,11 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type    | description                      |
-    | ----- | --------- | -------- | ------- | -------------------------------- |
-    | 0     | chainId   | true     | Short   | 链ID，说明该账户属于哪个链       |
+    | index | parameter | required | type    | description         |
+    | ----- | --------- | -------- | ------- | ------------------- |
+    | 0     | chainId   | true     | Short   | 链ID，说明该账户属于哪个链      |
     | 1     | count     | false    | Integer | 要创建账户数量，约束条件：1-100. |
-    | 2     | password  | false    | String  | 账户初始密码，可为空             |
+    | 2     | password  | false    | String  | 账户初始密码，可为空          |
 
   - 返回示例
 
@@ -176,12 +176,12 @@
 
   - 返回字段说明
 
-  | parameter | type      | description  |
-  | :-------- | :-------- | :----------- |
-  | code      | Integer   | 返回结果状态 |
-  | msg       | String    | 失败时的信息 |
-  | result    | jsonObj   | 业务数据     |
-  | list      | jsonArray | 账户地址列表 |
+  | parameter | type      | description |
+  | :-------- | :-------- | :---------- |
+  | code      | Integer   | 返回结果状态      |
+  | msg       | String    | 失败时的信息      |
+  | result    | jsonObj   | 业务数据        |
+  | list      | jsonArray | 账户地址列表      |
 
 - 依赖服务
 
@@ -238,11 +238,11 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type    | description                      |
-    | ----- | --------- | -------- | ------- | -------------------------------- |
-    | 0     | chainId   | true     | Short   | 链ID，说明该账户属于哪个链       |
+    | index | parameter | required | type    | description         |
+    | ----- | --------- | -------- | ------- | ------------------- |
+    | 0     | chainId   | true     | Short   | 链ID，说明该账户属于哪个链      |
     | 1     | count     | false    | Integer | 要创建账户数量，约束条件：1-100. |
-    | 2     | password  | false    | String  | 账户初始密码，可为空             |
+    | 2     | password  | false    | String  | 账户初始密码，可为空          |
 
   - 返回示例
 
@@ -270,20 +270,20 @@
 
   - 返回字段说明
 
-    | parameter       | type      | description                              |
-    | :-------------- | :-------- | :--------------------------------------- |
-    | code            | Integer   | 返回结果状态                             |
-    | msg             | String    | 失败时的信息                             |
-    | result          | jsonObj   | 业务数据                                 |
-    | list            | jsonArray | 账户地址列表                             |
-    | address         | String    | 账户地址                                 |
-    | pubKey          | String    | 公匙16进制编码                           |
-    | priKey          | String    | 私匙16进制编码                           |
+    | parameter       | type      | description              |
+    | :-------------- | :-------- | :----------------------- |
+    | code            | Integer   | 返回结果状态                   |
+    | msg             | String    | 失败时的信息                   |
+    | result          | jsonObj   | 业务数据                     |
+    | list            | jsonArray | 账户地址列表                   |
+    | address         | String    | 账户地址                     |
+    | pubKey          | String    | 公匙16进制编码                 |
+    | priKey          | String    | 私匙16进制编码                 |
     | encryptedPriKey | String    | 加密私匙16进制编码，与priKey不会同时为空 |
-    | extend          | String    | 扩展字段16进制编码                       |
-    | createTime      | long      | 账户创建时间                             |
-    | encrypted       | boolean   | 账户是否加密                             |
-    | remark          | String    | 备注                                     |
+    | extend          | String    | 扩展字段16进制编码               |
+    | createTime      | long      | 账户创建时间                   |
+    | encrypted       | boolean   | 账户是否加密                   |
+    | remark          | String    | 备注                       |
 
 - 依赖服务
 
@@ -291,11 +291,11 @@
 
 #### 2.2.3 创建多签账户
 
-  - 功能说明：
+-   功能说明：
 
     创建多重签名账户，包括账户的地址、脚本的创建，多签账户信息保存到数据库
 
-  - 流程描述
+- 流程描述
 
     ```
     1、验证签名公匙列表，最少验证签名数是否正确
@@ -305,7 +305,7 @@
     5、返回多签账户信息
     ```
 
-  - ac_createMultiSigAccount接口
+- ac_createMultiSigAccount接口
 
     - 接口说明
 
@@ -327,8 +327,8 @@
 
     - 请求参数说明
 
-      | index | parameter | required | type      | description                          |
-      | ----- | --------- | -------- | --------- | ------------------------------------ |
+      | index | parameter | required | type      | description              |
+      | ----- | --------- | -------- | --------- | ------------------------ |
       | 0     | chainId   | true     | Short     | 链ID，说明该账户属于哪个链           |
       | 1     | pubKeys   | true     | jsonArray | 需要签名的公钥列表,每个元素以16进制字符串表示 |
       | 2     | minSigns  | true     | Integer   | 最少签名数，最少需要几个公钥验证通过       |
@@ -354,18 +354,18 @@
 
     - 返回字段说明
 
-      | parameter | type    | description  |
-      | :-------- | :------ | :----------- |
-      | code      | Integer | 返回结果状态 |
-      | msg       | String  | 失败时的信息 |
-      | result    | jsonObj | 业务数据     |
-      | address   | String  | 多签账户地址 |
-      | minSigns  | Integer | 最小签名数   |
-      | pubKeys   | jsonObj | 公钥列表     |
-      | --pubKey  | String  | 公钥         |
-      | --address | String  | 地址         |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | address   | String  | 多签账户地址      |
+      | minSigns  | Integer | 最小签名数       |
+      | pubKeys   | jsonObj | 公钥列表        |
+      | --pubKey  | String  | 公钥          |
+      | --address | String  | 地址          |
 
-  - 依赖服务
+- 依赖服务
 
     无
 
@@ -416,11 +416,11 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type    | description      |
-    | ----- | --------- | -------- | ------- | ---------------- |
-    | 0     | chainId   | true     | Short   | 链ID             |
-    | 1     | address   | true     | Integer | 要删除的账户地址 |
-    | 2     | password  | false    | String  | 账户密码，可为空 |
+    | index | parameter | required | type    | description |
+    | ----- | --------- | -------- | ------- | ----------- |
+    | 0     | chainId   | true     | Short   | 链ID         |
+    | 1     | address   | true     | Integer | 要删除的账户地址    |
+    | 2     | password  | false    | String  | 账户密码，可为空    |
 
   - 返回示例
 
@@ -437,12 +437,12 @@
 
   - 返回字段说明
 
-    | parameter | type    | description  |
-    | :-------- | :------ | :----------- |
-    | code      | Integer | 返回结果状态 |
-    | msg       | String  | 失败时的信息 |
-    | result    | jsonObj | 业务数据     |
-    | value     | boolean | 删除是否成功 |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | value     | boolean | 删除是否成功      |
 
 - 依赖服务
 
@@ -502,12 +502,12 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type    | description        |
-    | ----- | --------- | -------- | ------- | ------------------ |
-    | 0     | chainId   | true     | Short   | 链ID               |
-    | 1     | priKey    | true     | String  | 账户私匙           |
-    | 2     | password  | false    | String  | 账户密码           |
-    | 3     | overwrite | true     | Boolean | 账户存在时是否覆盖 |
+    | index | parameter | required | type    | description |
+    | ----- | --------- | -------- | ------- | ----------- |
+    | 0     | chainId   | true     | Short   | 链ID         |
+    | 1     | priKey    | true     | String  | 账户私匙        |
+    | 2     | password  | false    | String  | 账户密码        |
+    | 3     | overwrite | true     | Boolean | 账户存在时是否覆盖   |
 
   - 返回示例
 
@@ -524,12 +524,12 @@
 
   - 返回字段说明
 
-    | parameter | type    | description  |
-    | :-------- | :------ | :----------- |
-    | code      | Integer | 返回结果状态 |
-    | msg       | String  | 失败时的信息 |
-    | result    | jsonObj | 业务数据     |
-    | address   | String  | 账户地址     |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | address   | String  | 账户地址        |
 
 - 依赖服务
 
@@ -584,12 +584,12 @@
 
     - 请求参数说明
 
-      | index | parameter | required | type    | description        |
-      | ----- | --------- | -------- | ------- | ------------------ |
-      | 0     | chainId   | true     | Short   | 链ID               |
-      | 1     | keyStore  | true     | String  | keyStore HEX编码   |
+      | index | parameter | required | type    | description    |
+      | ----- | --------- | -------- | ------- | -------------- |
+      | 0     | chainId   | true     | Short   | 链ID            |
+      | 1     | keyStore  | true     | String  | keyStore HEX编码 |
       | 2     | password  | false    | String  | 账户密码           |
-      | 3     | overwrite | true     | Boolean | 账户存在时是否覆盖 |
+      | 3     | overwrite | true     | Boolean | 账户存在时是否覆盖      |
 
     - 返回示例
 
@@ -606,12 +606,12 @@
 
     - 返回字段说明
 
-      | parameter | type    | description  |
-      | :-------- | :------ | :----------- |
-      | code      | Integer | 返回结果状态 |
-      | msg       | String  | 失败时的信息 |
-      | result    | jsonObj | 业务数据     |
-      | address   | String  | 账户地址     |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | address   | String  | 账户地址        |
 
 - 依赖服务
 
@@ -659,11 +659,11 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type      | description                          |
-    | ----- | --------- | -------- | --------- | ------------------------------------ |
-    | 0     | chainId   | true     | Short     | 链ID                                 |
-    | 1     | address   | true     | String    | 多签账户地址                         |
-    | 2     | pubkeys   | true     | jsonArray | 需要签名的公钥列表                   |
+    | index | parameter | required | type      | description        |
+    | ----- | --------- | -------- | --------- | ------------------ |
+    | 0     | chainId   | true     | Short     | 链ID                |
+    | 1     | address   | true     | String    | 多签账户地址             |
+    | 2     | pubkeys   | true     | jsonArray | 需要签名的公钥列表          |
     | 3     | minSigns  | true     | Integer   | 最小签名数，最少需要几个公钥验证通过 |
 
   - 返回示例
@@ -681,14 +681,13 @@
 
   - 返回字段说明
 
-    | parameter | type    | description  |
-    | :-------- | :------ | :----------- |
-    | code      | Integer | 返回结果状态 |
-    | msg       | String  | 失败时的信息 |
-    | result    | jsonObj | 业务数据     |
-    | address   | String  | 多签地址     |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | address   | String  | 多签地址        |
 
-  
 
 #### 2.2.8 导出账户私匙
 
@@ -731,9 +730,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | password  | true     | String | 账户密码    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | password  | true     | String | 账户密码        |
 
     - 返回示例
 
@@ -751,13 +750,13 @@
 
     - 返回字段说明
 
-      | parameter | type    | description  |
-      | :-------- | :------ | :----------- |
-      | code      | Integer | 返回结果状态 |
-      | msg       | String  | 失败时的信息 |
-      | result    | jsonObj | 业务数据     |
-      | address   | String  | 地址         |
-      | priKey    | String  | 私匙十六进制 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | address   | String  | 地址          |
+      | priKey    | String  | 私匙十六进制      |
 
 #### 2.2.9 导出账户KeyStore
 
@@ -797,12 +796,12 @@
 
     - 请求参数说明
 
-      | index | parameter | required | type   | description  |
-      | ----- | --------- | -------- | ------ | ------------ |
+      | index | parameter | required | type   | description |
+      | ----- | --------- | -------- | ------ | ----------- |
       | 0     | chainId   | true     | Short  | 链ID         |
-      | 1     | address   | true     | String | 账户地址     |
-      | 2     | password  | false    | String | 账户密码     |
-      | 3     | path      | false    | String | 文件备份地址 |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | password  | false    | String | 账户密码        |
+      | 3     | path      | false    | String | 文件备份地址      |
 
     - 返回示例
 
@@ -817,12 +816,12 @@
 
     - 返回字段说明
 
-      | parameter | type    | description  |
-      | :-------- | :------ | :----------- |
-      | code      | Integer | 返回结果状态 |
-      | msg       | String  | 失败时的信息 |
-      | result    | jsonObj | 业务数据     |
-      | path      | String  | 文件备份地址 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | path      | String  | 文件备份地址      |
 
 #### 2.2.10 查询全部账户
 
@@ -858,7 +857,7 @@
 
       | index | parameter | required | type  | description |
       | ----- | --------- | -------- | ----- | ----------- |
-      | 0     | chainId   | true     | Short | 链ID        |
+      | 0     | chainId   | true     | Short | 链ID         |
 
     - 返回示例
 
@@ -878,16 +877,16 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | list               | List     | 账户列表集合       |
-      | address            | String   | 账户地址           |
-      | alias              | String   | 别名               |
-      | pubkeyHex          | String   | 公匙16进制编码     |
-      | encryptedPrikeyHex | String   | 加密私匙16进制编码 |
+      | parameter          | type    | description |
+      | :----------------- | :------ | :---------- |
+      | code               | Integer | 返回结果状态      |
+      | msg                | String  | 失败时的信息      |
+      | result             | jsonObj | 业务数据        |
+      | list               | List    | 账户列表集合      |
+      | address            | String  | 账户地址        |
+      | alias              | String  | 别名          |
+      | pubkeyHex          | String  | 公匙16进制编码    |
+      | encryptedPrikeyHex | String  | 加密私匙16进制编码  |
 #### 2.2.11 根据地址获取账户
 
 - 功能说明：
@@ -924,8 +923,8 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
 
     - 返回示例 
 
@@ -945,15 +944,15 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | address            | String   | 账户地址           |
-      | alias              | String   | 别名               |
-      | pubkeyHex          | String   | 公匙16进制编码     |
-      | encryptedPrikeyHex | String   | 加密私匙16进制编码 |
+      | parameter          | type    | description |
+      | :----------------- | :------ | :---------- |
+      | code               | Integer | 返回结果状态      |
+      | msg                | String  | 失败时的信息      |
+      | result             | jsonObj | 业务数据        |
+      | address            | String  | 账户地址        |
+      | alias              | String  | 别名          |
+      | pubkeyHex          | String  | 公匙16进制编码    |
+      | encryptedPrikeyHex | String  | 加密私匙16进制编码  |
 
 #### 2.2.12 查询账户地址列表
 
@@ -991,11 +990,11 @@
 
     - 请求参数说明
 
-      | index | parameter  | required | type    | description  |
-      | ----- | ---------- | -------- | ------- | ------------ |
+      | index | parameter  | required | type    | description |
+      | ----- | ---------- | -------- | ------- | ----------- |
       | 0     | chainId    | true     | Short   | 链ID         |
-      | 1     | pageNumber | true     | Integer | 页码         |
-      | 2     | pageSize   | true     | Integer | 每页显示数量 |
+      | 1     | pageNumber | true     | Integer | 页码          |
+      | 2     | pageSize   | true     | Integer | 每页显示数量      |
 
     - 返回示例
 
@@ -1010,12 +1009,12 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | list     | jsonArray | 地址列表集合   |
+      | parameter | type      | description |
+      | :-------- | :-------- | :---------- |
+      | code      | Integer   | 返回结果状态      |
+      | msg       | String    | 失败时的信息      |
+      | result    | jsonObj   | 业务数据        |
+      | list      | jsonArray | 地址列表集合      |
 
 #### 2.2.13 根据别名获取地址
 
@@ -1052,8 +1051,8 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | alias     | true     | String | 别名        |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | alias     | true     | String | 别名          |
 
     - 返回示例
 
@@ -1070,12 +1069,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :-------------- |
-      | code     | Integer  | 返回结果状态    |
-      | msg      | String   | 失败时的信息    |
-      | result   | jsonObj  | 业务数据        |
-      | address  | String   | 地址,Base58编码 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | address   | String  | 地址,Base58编码 |
 #### 2.2.14 查询账户私匙
 
 - 功能说明：
@@ -1115,9 +1114,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
+      | 0     | chainId   | true     | Short  | 链ID         |
       | 1     | address   | true     | String | address     |
-      | 2     | password  | false    | String | 账户密码    |
+      | 2     | password  | false    | String | 账户密码        |
 
     - 返回示例
 
@@ -1133,13 +1132,13 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | priKey   | String   | 私匙十六进制 |
-      | valid | Boolean | 账户是否存在 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | priKey    | String  | 私匙十六进制      |
+      | valid     | Boolean | 账户是否存在      |
 #### 2.2.15 查询所有账户私匙
 
 - 功能说明：
@@ -1176,10 +1175,10 @@
 
     - 请求参数说明
 
-      | index | parameter | required | type   | description                 |
-      | ----- | --------- | -------- | ------ | --------------------------- |
+      | index | parameter | required | type   | description     |
+      | ----- | --------- | -------- | ------ | --------------- |
       | 0     | chainId   | false    | Short  | 链ID，默认为0查询所有链账户 |
-      | 2     | password  | false    | String | 账户密码                    |
+      | 2     | password  | false    | String | 账户密码            |
 
     - 返回示例
 
@@ -1194,12 +1193,12 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | list     | String   | 私匙集合     |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | list      | String  | 私匙集合        |
 #### 2.2.16 设置密码
 
 - 功能说明：
@@ -1238,9 +1237,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | password  | true     | String | 账户密码    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | password  | true     | String | 账户密码        |
 
     - 返回示例
 
@@ -1255,12 +1254,12 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | value               | boolean  | 业务数据，密码设置是否成功 |
+      | parameter | type    | description   |
+      | :-------- | :------ | :------------ |
+      | code      | Integer | 返回结果状态        |
+      | msg       | String  | 失败时的信息        |
+      | result    | jsonObj | 业务数据          |
+      | value     | boolean | 业务数据，密码设置是否成功 |
 #### 2.2.17 设置离线账户密码
 
 - 功能说明：
@@ -1301,10 +1300,10 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | priKey    | true     | String | 账户私匙    |
-      | 3     | password  | true     | String | 账户密码    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | priKey    | true     | String | 账户私匙        |
+      | 3     | password  | true     | String | 账户密码        |
 
     - 返回示例
 
@@ -1321,12 +1320,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :-------------- | :------- | :----------- |
-      | code            | Integer  | 返回结果状态 |
-      | msg             | String   | 失败时的信息 |
-      | result          | jsonObj  | 业务数据     |
-      | encryptedPriKey | String   | 加密私匙     |
+      | parameter       | type    | description |
+      | :-------------- | :------ | :---------- |
+      | code            | Integer | 返回结果状态      |
+      | msg             | String  | 失败时的信息      |
+      | result          | jsonObj | 业务数据        |
+      | encryptedPriKey | String  | 加密私匙        |
 #### 2.2.18 修改密码
 
 - Request Body
@@ -1368,10 +1367,10 @@
 
       | index | parameter   | required | type   | description |
       | ----- | ----------- | -------- | ------ | ----------- |
-      | 0     | chainId     | true     | Short  | 链ID        |
-      | 1     | address     | true     | String | 账户地址    |
-      | 2     | password    | true     | String | 账户密码    |
-      | 3     | newPassword | true     | String | 账户新密码  |
+      | 0     | chainId     | true     | Short  | 链ID         |
+      | 1     | address     | true     | String | 账户地址        |
+      | 2     | password    | true     | String | 账户密码        |
+      | 3     | newPassword | true     | String | 账户新密码       |
 
     - 返回示例
 
@@ -1386,12 +1385,12 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | value               | boolean  | 密码修改是否成功 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | value     | boolean | 密码修改是否成功    |
 #### 2.2.19 修改离线账户密码
 
 - 功能说明：
@@ -1425,18 +1424,18 @@
               "111111"
           ]
       }
-      
+
       ```
 
     - 请求参数说明
 
       | index | parameter   | required | type   | description |
       | ----- | ----------- | -------- | ------ | ----------- |
-      | 0     | chainId     | true     | Short  | 链ID        |
-      | 1     | address     | true     | String | 账户地址    |
-      | 2     | priKey      | true     | String | 私匙        |
-      | 3     | password    | true     | String | 账户密码    |
-      | 4     | newPassword | true     | String | 账户新密码  |
+      | 0     | chainId     | true     | Short  | 链ID         |
+      | 1     | address     | true     | String | 账户地址        |
+      | 2     | priKey      | true     | String | 私匙          |
+      | 3     | password    | true     | String | 账户密码        |
+      | 4     | newPassword | true     | String | 账户新密码       |
 
     - 返回示例
 
@@ -1451,12 +1450,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :-------------- | :------- | :----------- |
-      | code            | Integer  | 返回结果状态 |
-      | msg             | String   | 失败时的信息 |
-      | result          | jsonObj  | 业务数据     |
-      | encryptedPriKey | String   | 加密私匙     |
+      | parameter       | type    | description |
+      | :-------------- | :------ | :---------- |
+      | code            | Integer | 返回结果状态      |
+      | msg             | String  | 失败时的信息      |
+      | result          | jsonObj | 业务数据        |
+      | encryptedPriKey | String  | 加密私匙        |
 #### 2.2.20 验证密码
 
 - 功能说明：
@@ -1494,9 +1493,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | password  | true     | String | 账户密码    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | password  | true     | String | 账户密码        |
 
     - 返回示例
 
@@ -1511,12 +1510,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | value    | boolean  | 密码是否正确 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | value     | boolean | 密码是否正确      |
 #### 2.2.21 验证账户是否加密
 
 - 功能说明：
@@ -1552,8 +1551,8 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
 
     - 返回示例
 
@@ -1570,12 +1569,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | value    | boolean  | 账户是否加密 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | value     | boolean | 账户是否加密      |
 #### 2.2.22 设置账户别名
 
 - 功能说明：
@@ -1617,10 +1616,10 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | password  | false    | String | 账户密码    |
-      | 3     | alias     | true     | String | 别名        |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | password  | false    | String | 账户密码        |
+      | 3     | alias     | true     | String | 别名          |
 
     - 返回示例
 
@@ -1635,12 +1634,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | txHash   | String   | 别名交易hash |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | txHash    | String  | 别名交易hash    |
 
 - 依赖服务
 
@@ -1682,9 +1681,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | alias     | true     | String | 别名        |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | alias     | true     | String | 别名          |
 
     - 返回示例
 
@@ -1700,13 +1699,13 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据     |
-      | fee                 | String   | 别名交易手续费 |
-      | maxAmount           | String   | 交易最大手续费 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | fee       | String  | 别名交易手续费     |
+      | maxAmount | String  | 交易最大手续费     |
 #### 2.3.24 根据地址查询别名
 
 - 功能说明：
@@ -1743,8 +1742,8 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
 
     - 返回示例
 
@@ -1759,12 +1758,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | alias    | String   | 账户别名     |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | alias     | String  | 账户别名        |
 #### 2.2.25 验证别名是否可用
 
 - 功能说明：
@@ -1800,8 +1799,8 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | alias     | true     | String | 账户别名    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | alias     | true     | String | 账户别名        |
 
     - 返回示例
 
@@ -1816,12 +1815,12 @@
 
     - 返回字段说明
 
-      | parameter   | type | description |
-      | :------------------ | :------- | :----------- |
-      | code                | Integer  | 返回结果状态 |
-      | msg                 | String   | 失败时的信息 |
-      | result              | jsonObj  | 业务数据    |
-      | value               | boolean  | 别名是否可用 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | value     | boolean | 别名是否可用      |
 #### 2.2.26 设置账户备注
 
 - 功能说明：
@@ -1859,9 +1858,9 @@
 
       | index | parameter | required | type   | description |
       | ----- | --------- | -------- | ------ | ----------- |
-      | 0     | chainId   | true     | Short  | 链ID        |
-      | 1     | address   | true     | String | 账户地址    |
-      | 2     | remark    | true     | String | 账户备注    |
+      | 0     | chainId   | true     | Short  | 链ID         |
+      | 1     | address   | true     | String | 账户地址        |
+      | 2     | remark    | true     | String | 账户备注        |
 
     - 返回示例
 
@@ -1876,12 +1875,12 @@
 
     - 返回字段说明
 
-      | parameter | type | description |
-      | :------- | :------- | :----------- |
-      | code     | Integer  | 返回结果状态 |
-      | msg      | String   | 失败时的信息 |
-      | result   | jsonObj  | 业务数据     |
-      | value    | boolean  | 设置是否成功 |
+      | parameter | type    | description |
+      | :-------- | :------ | :---------- |
+      | code      | Integer | 返回结果状态      |
+      | msg       | String  | 失败时的信息      |
+      | result    | jsonObj | 业务数据        |
+      | value     | boolean | 设置是否成功      |
 #### 2.2.27 设置多签账户别名
 
 - 功能说明：
@@ -1925,13 +1924,13 @@
 
   - 请求参数说明
 
-    | index | parameter   | required | type   | description  |
-    | ----- | ----------- | -------- | ------ | ------------ |
+    | index | parameter   | required | type   | description |
+    | ----- | ----------- | -------- | ------ | ----------- |
     | 0     | chainId     | true     | Short  | 链ID         |
-    | 1     | address     | true     | String | 多签账户地址 |
-    | 2     | signAddress | true     | String | 签名地址     |
-    | 3     | password    | false    | String | 账户密码     |
-    | 4     | alias       | true     | String | 别名         |
+    | 1     | address     | true     | String | 多签账户地址      |
+    | 2     | signAddress | true     | String | 签名地址        |
+    | 3     | password    | false    | String | 账户密码        |
+    | 4     | alias       | true     | String | 别名          |
 
   - 返回示例
 
@@ -1944,17 +1943,17 @@
            "txHash":"1cb336b834494fb7eef070cf9c3e60a5a49e762ca1f81cb2592593047235f308"
         }
     }
-    
+
     ```
 
   - 返回字段说明
 
-    | parameter | type    | description      |
-    | :-------- | :------ | :--------------- |
-    | code      | Integer | 返回结果状态     |
-    | msg       | String  | 失败时的信息     |
-    | result    | jsonObj | 业务数据         |
-    | txHash    | String  | 多签别名交易hash |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | txHash    | String  | 多签别名交易hash  |
 
 - 依赖服务
 
@@ -1995,10 +1994,10 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description  |
-    | ----- | --------- | -------- | ------ | ------------ |
+    | index | parameter | required | type   | description |
+    | ----- | --------- | -------- | ------ | ----------- |
     | 0     | chainId   | true     | Short  | 链ID         |
-    | 1     | address   | true     | String | 多签账户地址 |
+    | 1     | address   | true     | String | 多签账户地址      |
 
   - 返回示例
 
@@ -2011,17 +2010,17 @@
            "value":true
         }
     }
-    
+
     ```
 
   - 返回字段说明
 
-    | parameter | type    | description  |
-    | :-------- | :------ | :----------- |
-    | code      | Integer | 返回结果状态 |
-    | msg       | String  | 失败时的信息 |
-    | result    | jsonObj | 业务数据     |
-    | value     | boolean | 是否移除成功 |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | value     | boolean | 是否移除成功      |
 
 
 #### 2.2.29 交易统一验证
@@ -2054,14 +2053,14 @@
       "minVersion":1.0,
       "params": [chianId, ["txHex","txHex","txHex", ...]]
     }
-    
+
     ```
 
   - 请求参数说明
 
-    | index | parameter | required | type  | description            |
-    | ----- | --------- | -------- | ----- | ---------------------- |
-    | 0     | chainId   | true     | Short | 链ID                   |
+    | index | parameter | required | type  | description |
+    | ----- | --------- | -------- | ----- | ----------- |
+    | 0     | chainId   | true     | Short | 链ID         |
     | 1     | txHex     | true     | array | 别名交易序列化数据数组 |
 
     txHex说明
@@ -2110,11 +2109,11 @@
 
   - 返回字段说明
 
-    | parameter | type      | description              |
-    | :-------- | :-------- | :----------------------- |
-    | code      | Integer   | 返回结果状态             |
-    | msg       | String    | 失败时的信息             |
-    | result    | jsonObj   | 业务数据                 |
+    | parameter | type      | description  |
+    | :-------- | :-------- | :----------- |
+    | code      | Integer   | 返回结果状态       |
+    | msg       | String    | 失败时的信息       |
+    | result    | jsonObj   | 业务数据         |
     | list      | jsonArray | 不合法交易序列化数据数组 |
 
 
@@ -2150,15 +2149,15 @@
       "minVersion":1.0,
       "params": [chainId,"txHex"]
     }
-    
+
     ```
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description        |
-    | ----- | --------- | -------- | ------ | ------------------ |
-    | 0     | chainId   | true     | Short  | 链ID               |
-    | 1     | txHex     | true     | String | 别名交易序列化数据 |
+    | index | parameter | required | type   | description |
+    | ----- | --------- | -------- | ------ | ----------- |
+    | 0     | chainId   | true     | Short  | 链ID         |
+    | 1     | txHex     | true     | String | 别名交易序列化数据   |
 
     txHex说明
 
@@ -2206,12 +2205,12 @@
 
   - 返回字段说明
 
-    | parameter | type    | description  |
-    | :-------- | :------ | :----------- |
-    | code      | Integer | 返回结果状态 |
-    | msg       | String  | 失败时的信息 |
-    | result    | jsonObj | 业务数据     |
-    | value     | boolean | 是否验证成功 |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | value     | boolean | 是否验证成功      |
 
 
 #### 2.2.31 别名交易提交
@@ -2244,16 +2243,16 @@
       "minVersion":1.0,
       "params": [chainId,"txHex","secondaryDataHex"]
     }
-    
+
     ```
 
   - 请求参数说明
 
-    | index | parameter        | required | type   | description        |
-    | ----- | ---------------- | -------- | ------ | ------------------ |
-    | 0     | chainId          | true     | Short  | 链ID               |
-    | 1     | txHex            | true     | String | 别名交易序列化数据 |
-    | 2     | secondaryDataHex | true     | String | 区块头序列化数据   |
+    | index | parameter        | required | type   | description |
+    | ----- | ---------------- | -------- | ------ | ----------- |
+    | 0     | chainId          | true     | Short  | 链ID         |
+    | 1     | txHex            | true     | String | 别名交易序列化数据   |
+    | 2     | secondaryDataHex | true     | String | 区块头序列化数据    |
 
     txHex说明
 
@@ -2296,9 +2295,8 @@
         }
     ```
 
-    
 
-  - 返回示例
+-   返回示例
 
     ```
     {
@@ -2311,14 +2309,14 @@
     }
     ```
 
-  - 返回字段说明
+- 返回字段说明
 
-    | parameter | type    | description          |
-    | :-------- | :------ | :------------------- |
-    | code      | Integer | 返回结果状态         |
-    | msg       | String  | 失败时的信息         |
-    | result    | jsonObj | 业务数据             |
-    | value     | boolean | 别名交易保存是否成功 |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | value     | boolean | 别名交易保存是否成功  |
 
 #### 2.2.32 别名交易回滚
 
@@ -2350,16 +2348,16 @@
       "minVersion":1.0,
       "params": [chainId,"txHex","secondaryDataHex"]
     }
-    
+
     ```
 
   - 请求参数说明
 
-    | index | parameter        | required | type   | description        |
-    | ----- | ---------------- | -------- | ------ | ------------------ |
-    | 0     | chainId          | true     | Short  | 链ID               |
-    | 1     | txHex            | true     | String | 别名交易序列化数据 |
-    | 2     | secondaryDataHex | true     | String | 区块头序列化数据   |
+    | index | parameter        | required | type   | description |
+    | ----- | ---------------- | -------- | ------ | ----------- |
+    | 0     | chainId          | true     | Short  | 链ID         |
+    | 1     | txHex            | true     | String | 别名交易序列化数据   |
+    | 2     | secondaryDataHex | true     | String | 区块头序列化数据    |
 
     txHex说明
 
@@ -2402,9 +2400,8 @@
         }
     ```
 
-    
 
-  - 返回示例
+-   返回示例
 
     ```
     {
@@ -2417,15 +2414,15 @@
     }
     ```
 
-  - 返回字段说明
+- 返回字段说明
 
-    | parameter | type    | description          |
-    | :-------- | :------ | :------------------- |
-    | code      | Integer | 返回结果状态         |
-    | msg       | String  | 失败时的信息         |
-    | result    | jsonObj | 业务数据             |
-    | value     | boolean | 别名交易回滚是否成功 |
-  
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | value     | boolean | 别名交易回滚是否成功  |
+
 #### 2.2.33 数据签名
 
 - 功能说明：
@@ -2464,11 +2461,11 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description                       |
-    | ----- | --------- | -------- | ------ | --------------------------------- |
-    | 0     | chainId   | true     | Short  | 链ID                              |
-    | 1     | address   | true     | String | 账户地址                          |
-    | 2     | password  | false    | String | 账户密码                          |
+    | index | parameter | required | type   | description          |
+    | ----- | --------- | -------- | ------ | -------------------- |
+    | 0     | chainId   | true     | Short  | 链ID                  |
+    | 1     | address   | true     | String | 账户地址                 |
+    | 2     | password  | false    | String | 账户密码                 |
     | 3     | dataHex   | true     | String | 待签名数据HEX编码，如交易hash摘要 |
 
   - 返回示例
@@ -2486,19 +2483,19 @@
 
   - 返回字段说明
 
-    | parameter    | type    | description  |
-    | :----------- | :------ | :----------- |
-    | code         | Integer | 返回结果状态 |
-    | msg          | String  | 失败时的信息 |
-    | result       | jsonObj | 业务数据     |
-    | signatureHex | string  | 签名后的数据 |
+    | parameter    | type    | description |
+    | :----------- | :------ | :---------- |
+    | code         | Integer | 返回结果状态      |
+    | msg          | String  | 失败时的信息      |
+    | result       | jsonObj | 业务数据        |
+    | signatureHex | string  | 签名后的数据      |
 
 
 #### 2.2.34 别名转账
 
 - 功能说明：
 
-  转账到指定别名的账户中
+  非多签账户作为转出方转账到指定别名的账户中
 
 - 流程描述
 
@@ -2524,22 +2521,27 @@
       "params": 
         {
             "chainId":"12345",
+            "assetsId":"12345",
             "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
             "password":"",
-            "dataHex":""
+            "alias":"",
+            "amount":"123",
+            "remark":""
         }
     }
     ```
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description                       |
-    | ----- | --------- | -------- | ------ | --------------------------------- |
-    | 0     | chainId   | true     | Short  | 链ID                              |
-    | 1     | address   | true     | String | 转出方地址                          |
-    | 2     | password  | false    | String | 账户密码                           |
-    | 3     | alias     | true     | String | 转入方别名                         |
-    | 4     | mount     | true     | String | 转账金额                         |
+    | index | parameter | required | type  | description |
+    | ----- | --------- | -------- | ----- | ----------- |
+    | 0     | chainId   | true     | Short | 链ID         |
+    | 1     | assetsId    | false    | Integer | 资产ID，如果资产ID为空，则取当前链的主资产                    |
+    | 2     | address   | true     | String | 转出方地址  |                       
+    | 3     | password  | false    | String | 账户密码，如果账户已经设置密码则必须传入                   |
+    | 4     | alias     | true     | String | 转入方别名                         |
+    | 5     | amount     | true     | String | 转账金额                         |
+    | 6     | remark     | false   | String | 交易备注                         |
 
   - 返回示例
 
@@ -2549,57 +2551,61 @@
         "msg": "success",
         "version":1.0,
         "result": {
-           "signatureHex":""
+           "txHash":""
         }
     }
     ```
 
   - 返回字段说明
-    如果转出地址为多签账户并且未达到最少签名数，则返回的数据为16进制交易数据串
-    如果转出地址为非多签账户，则返回的数据为交易hash
+    如果返回的数据为交易hash
 
-    | parameter    | type    | description  |
-    | :----------- | :------ | :----------- |
-    | code         | Integer | 返回结果状态 |
-    | msg          | String  | 失败时的信息 |
-    | result       | jsonObj | 业务数据     |
-    | txHash       | string  | 交易Hash |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | txHash    | string  | 交易Hash      |
 
 
 #### 2.2.35 创建多签账户转账
 
 - 功能说明：
 
-  创建多签账户转账到其它账户交易
+  创建多签账户转账到其它账户交易，收款方可以为地址或者别名。
 
 - 流程描述
 
   ```
   1、验证请求参数格式是否正确，金额是否正确
   2、验证签名账户是否存在，验证密码是否正确
-  2、验证多签账户是否存在，签名账户是否存在于多签账户中
+  3、验证多签账户是否存在，签名账户是否存在于多签账户中
+  4、如果转入方是别名，则通过别名查询出账户地址
   3、对交易进行签名
-  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  4、返回交易数据的16进制串
   ```
 
 - ac_createMultiSignTransfer接口
 
   - 接口说明
 
-    该接口用于向指定别名的账户转账。
+    该接口用于创建多签账户转账。
 
   - 请求示例
 
     ```
     {
-      "cmd": "ac_createMultiSignTransfer接口",
+      "cmd": "ac_createMultiSignTransfer",
       "minVersion":1.0,
       "params": 
         {
             "chainId":"12345",
-            "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
+            "assetsId":"12345",
+            "address":"NseMUi1q9TefkXUcaysAuvFjj4NbTESA",
             "signAddress":"NseMUi1q9TefkXUcaysAuvFjj4NbTEST",
             "password":"",
+            "type":1,
+            "toAddress":"",
+            "alias":"",
             "amount":"",
             "remark":""
         }
@@ -2608,14 +2614,18 @@
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description                       |
-    | ----- | --------- | -------- | ------ | --------------------------------- |
-    | 0     | chainId   | true     | Integer | 链ID                              |
-    | 2     | address   | true     | String  | 账户地址                              |
-    | 3     | signAddress   | true     | String | 签名地址                          |
-    | 4     | password  | false    | String | 账户密码                           |
-    | 5     | amount     | true     | String | 转账金额                         |
-    | 6     | remark     | true     | String | 交易备注                        |
+    | index | parameter   | required | type    | description                |
+    | ----- | ----------- | -------- | ------- | -------------------------- |
+    | 0     | chainId     | true     | Integer | 链ID                        |
+    | 1     | assetsId    | false    | Integer | 资产ID，如果资产ID为空，则取当前链的主资产                    |
+    | 2     | address     | true     | String  | 账户地址                       |
+    | 3     | signAddress | true     | String  | 签名地址                       |
+    | 4     | password    | false    | String  | 账户密码，如果账户已经加密则必须传入         |
+    | 5     | type        | true     | Integer | 转账类型，如果为1则为地址转账，如果为2则为别名转账 |
+    | 6     | toAddress   | false    | String  | 转入名地址,type为1则必须传入          |
+    | 7     | alias       | false    | String  | 转入方别名，type为2则必须传入          |
+    | 8     | amount      | true     | String  | 转账金额                       |
+    | 9     | remark      | true     | String  | 交易备注                       |
 
   - 返回示例
 
@@ -2625,68 +2635,68 @@
         "msg": "success",
         "version":1.0,
         "result": {
-           "txData":""
+           "txHex":""
         }
     }
     ```
 
   - 返回字段说明
-    如果未达到最少签名数则返回的数据为16进制交易数据串
-    如果已达到最少签名数并且已经广播交易，则返回的数据为交易hash
+    返回的数据为16进制交易数据串
 
-    | parameter    | type    | description  |
-    | :----------- | :------ | :----------- |
-    | code         | Integer | 返回结果状态 |
-    | msg          | String  | 失败时的信息 |
-    | result       | jsonObj | 业务数据     |
-    | txData        | string  | 如果未广播交易则返回交易的16进制数据 |
+    | parameter | type    | description |
+    | :-------- | :------ | :---------- |
+    | code      | Integer | 返回结果状态      |
+    | msg       | String  | 失败时的信息      |
+    | result    | jsonObj | 业务数据        |
+    | txHex     | string  | 交易的16进制数据   |
+    | txHash    | string  | 交易Hash      |
 
 #### 2.2.36 多签转账签名
 
 - 功能说明：
 
-  多签账户转账到其它账户
+  多签转账场景中，在未达到最少签名之前，通过该接口对交易进行签名
 
 - 流程描述
 
   ```
-  1、验证请求参数格式是否正确，金额是否正确
-  2、验证签名账户是否存在，验证密码是否正确
-  2、验证多签账户是否存在，签名账户是否存在于多签账户中
+  1、验证请求参数格式是否正确
+  2、将交易数据反序列化为交易对象
+  2、验证多签账户是否存在，签名账户是否存在于多签账户列表中
   3、对交易进行签名
-  4、判断签名数量是否达到最少签名数量，如果达到则广播交易，如果未达到则返回交易数据的16进制串
+  4、判断签名数量是否达到最少签名数量，如果达到则广播交易并返回交易的hash，如果未达到则返回签名后的交易数据的16进制串
   ```
 
 - ac_signMultiSignTransaction接口
 
   - 接口说明
 
-    该接口用于向指定别名的账户转账。
+    该接口用于多签交易中的交易签名。
 
   - 请求示例
 
     ```
     {
-      "cmd": "ac_transferByAlias",
+      "cmd": "ac_signMultiSignTransaction",
       "minVersion":1.0,
       "params": 
         {
             "chainId":"12345",
             "signAddress":"",
             "password":"",
-            "txData":""
+            "txHex":""
         }
     }
     ```
 
   - 请求参数说明
 
-    | index | parameter | required | type   | description                       |
-    | ----- | --------- | -------- | ------ | --------------------------------- |
-    | 0     | chainId   | true     | Short  | 链ID                              |
-    | 1     | signAddress   | true     | String | 签名地址                          |
-    | 2     | password  | false    | String | 账户密码                           |
-    | 3     | txData     | true     | String | 交易数据                         |
+    | index | parameter   | required | type    | description |
+    | ----- | ----------- | -------- | ------- | ----------- |
+    | 0     | chainId     | true     | Integer | 链ID         |
+    | 1     | signAddress | true     | String  | 签名地址        |
+    | 2     | password    | false    | String  | 账户密码        |
+    | 3     | txHex       | true     | String  | 交易数据的16进制串  |
 
   - 返回示例
 
@@ -2696,21 +2706,23 @@
         "msg": "success",
         "version":1.0,
         "result": {
-           "value":""
+           "txHash":"",
+           "txHex":""
         }
     }
     ```
 
   - 返回字段说明
     如果未达到最少签名数则返回的数据为16进制交易数据串
-    如果已达到最少签名数并且已经广播交易，则返回的数据为交易hash
+    如果已达到最少签名数则广播交易，返回的数据为交易hash
 
-    | parameter    | type    | description  |
-    | :----------- | :------ | :----------- |
-    | code         | Integer | 返回结果状态 |
-    | msg          | String  | 失败时的信息 |
-    | result       | jsonObj | 业务数据     |
-    | value        | string  | 如果已经广播交易则返回交易Hash，如果未广播交易则返回交易的16进制数据 |
+    | parameter | type    | description              |
+    | :-------- | :------ | :----------------------- |
+    | code      | Integer | 返回结果状态                   |
+    | msg       | String  | 失败时的信息                   |
+    | result    | jsonObj | 业务数据                     |
+    | txHex     | string  | 达到最小签名数则广播交易并返回交易的16进制数据 |
+    | txHash    | string  | 如果已经广播交易则返回交易Hash        |
 
 ### 2.3 模块内部功能
 
@@ -2783,9 +2795,9 @@
 
   - 别名交易参数
 
-  | Len  | Fields  | Data Type | Remark                                |
-  | ---- | ------- | --------- | ------------------------------------- |
-  | 24   | address | byte[]    | 设置别名的地址                        |
+  | Len  | Fields  | Data Type | Remark                |
+  | ---- | ------- | --------- | --------------------- |
+  | 24   | address | byte[]    | 设置别名的地址               |
   | 32   | alias   | byte[]    | 别名字符串转成的字节数组，用UTF-8解码 |
 
   * 验证器
@@ -2826,26 +2838,26 @@ server.port:8080    //提供服务的端口
   非NULS体系：chainId+length+address
 
 
-| `字段名称`      | ` type` | `说明`                                      |
-| :-------------- | :------ | :------------------------------------------ |
-| chainId         | short   | 链ID                                        |
+| `字段名称`          | ` type` | `说明`                                  |
+| :-------------- | :------ | :------------------------------------ |
+| chainId         | short   | 链ID                                   |
 | address         | String  | 账户地址（Base58(address)+Base58(chainId)） |
-| alias           | String  | 账户别名                                    |
-| status          | Integer | 是否默认账户（不保存）                      |
-| pubKey          | byte[]  | 公匙                                        |
-| priKey          | byte[]  | 私匙-未加密                                 |
-| encryptedPriKey | byte[]  | 已加密私匙                                  |
-| extend          | byte[]  | 扩展数据                                    |
-| remark          | String  | 备注                                        |
-| createTime      | long    | 创建时间                                    |
+| alias           | String  | 账户别名                                  |
+| status          | Integer | 是否默认账户（不保存）                           |
+| pubKey          | byte[]  | 公匙                                    |
+| priKey          | byte[]  | 私匙-未加密                                |
+| encryptedPriKey | byte[]  | 已加密私匙                                 |
+| extend          | byte[]  | 扩展数据                                  |
+| remark          | String  | 备注                                    |
+| createTime      | long    | 创建时间                                  |
 
 * Address对象设计（不持久化存储）
 
-| `字段名称`   | ` type` | `说明`       |
-| ------------ | ------- | ------------ |
-| chainId      | short   | 链ID         |
-| addressType  | byte    | 地址类型     |
-| hash160      | byte[]  | 公匙hash     |
+| `字段名称`       | ` type` | `说明`   |
+| ------------ | ------- | ------ |
+| chainId      | short   | 链ID    |
+| addressType  | byte    | 地址类型   |
+| hash160      | byte[]  | 公匙hash |
 | addressBytes | byte[]  | 地址字节数组 |
 
 - Alias对象设计
@@ -2856,18 +2868,18 @@ server.port:8080    //提供服务的端口
 
   需要按照不同的链分别创建不同的别名表
 
-| `字段名称` | ` type` | `说明`   |
-| ---------- | ------- | -------- |
-| address    | byte[]  | 账户地址 |
-| alias      | String  | 账户别名 |
+| `字段名称`  | ` type` | `说明` |
+| ------- | ------- | ---- |
+| address | byte[]  | 账户地址 |
+| alias   | String  | 账户别名 |
 
 - MultiSigAccount对象设计
 
-| `字段名称` | ` type`      | `说明`             |
-| ---------- | ------------ | ------------------ |
-| address    | String       | 账户地址           |
+| `字段名称`     | ` type`      | `说明`      |
+| ---------- | ------------ | --------- |
+| address    | String       | 账户地址      |
 | pubKeyList | List<byte[]> | 需要签名的公钥列表 |
-| minSigns   | long         | 最少签名数         |
+| minSigns   | long         | 最少签名数     |
 
 
 
